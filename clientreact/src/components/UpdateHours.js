@@ -16,11 +16,13 @@ class UpdateHours extends React.Component {
       method: "put",
       url: "/api/emp/updatehours/" + name,
       data: {
-        Jan: {
+        data: {
+          month: this.state.month,
           hours: this.state.hours,
-        }
+        },
       },
     }).then((res) => {
+      console.log(res);
       this.setState({ name: "", hours: "", month: "", success: true });
     });
   };

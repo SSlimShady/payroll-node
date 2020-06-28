@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Button } from "reactstrap";
 import Navbar from "./components/AppNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AppNavbar from "./components/AppNavbar";
 import AppTable from "./components/AppTable";
@@ -113,27 +113,31 @@ class App extends React.Component {
               </React.Fragment>
             )}
           />
-          <div className="auth-wrapper">
-            <div className="auth-inner">
-              <Route
-                path="/login"
-                render={(props) => (
+
+          <Route
+            path="/login"
+            render={(props) => (
+              <div className="auth-wrapper">
+                <div className="auth-inner">
                   <React.Fragment>
                     <Login />
-                  </React.Fragment>
-                )}
-              />
-              <Route
-                path="/register"
-                render={(props) => (
+                  </React.Fragment>{" "}
+                </div>{" "}
+              </div>
+            )}
+          />
+          <Route
+            path="/register"
+            render={(props) => (
+              <div className="auth-wrapper">
+                <div className="auth-inner">
                   <React.Fragment>
                     <Register />
-                  </React.Fragment>
-                )}
-              />
-            </div>
-          </div>
-
+                  </React.Fragment>{" "}
+                </div>{" "}
+              </div>
+            )}
+          />
         </div>
       </Router>
     );

@@ -51,22 +51,61 @@ router.put("/updateemp/:name", (req, res) => {
 
 //Put request(Update HOURS)
 router.put("/updatehours/:name", (req, res) => {
-  Employee.findOneAndUpdate(
-    { name: req.params.name },
-    {
-      Jan: {
-        hours: req.body.Jan.hours,
+  console.log(req.body);
+  if (req.body.data.month == "Jan") {
+    Employee.findOneAndUpdate(
+      { name: req.params.name },
+      {
+        Jan: {
+          hours: req.body.data.hours,
+        },
       },
-    },
-    { new: true, runValidators: false },
-    (err, data) => {
-      if (err) {
-        res.json({ success: false, error: err });
-      } else {
-        res.json({ success: true, new: data });
+      { new: true, runValidators: false },
+      (err, data) => {
+        if (err) {
+          res.json({ success: false, error: err });
+        } else {
+          res.json({ success: true, new: data });
+        }
       }
-    }
-  );
+    );
+  }
+  if (req.body.data.month == "Feb") {
+    Employee.findOneAndUpdate(
+      { name: req.params.name },
+      {
+        Feb: {
+          hours: req.body.data.hours,
+        },
+      },
+      { new: true, runValidators: false },
+      (err, data) => {
+        if (err) {
+          res.json({ success: false, error: err });
+        } else {
+          res.json({ success: true, new: data });
+        }
+      }
+    );
+  }
+  if (req.body.data.month == "Mar") {
+    Employee.findOneAndUpdate(
+      { name: req.params.name },
+      {
+        Mar: {
+          hours: req.body.data.hours,
+        },
+      },
+      { new: true, runValidators: false },
+      (err, data) => {
+        if (err) {
+          res.json({ success: false, error: err });
+        } else {
+          res.json({ success: true, new: data });
+        }
+      }
+    );
+  }
 });
 //Put request(Update Variation)
 router.put("/updatevar/:name", (req, res) => {
@@ -95,6 +134,8 @@ router.post("/register", (req, res) => {
     res.json({ success: false, error: "Passwords dont match" });
     return;
   }
+  console.log(Object.entries(req.body));
+  return;
   const newUser = new User({
     name: req.body.name,
     password: req.body.password,
@@ -104,7 +145,7 @@ router.post("/register", (req, res) => {
   newUser
     .save()
     .then((empnew) => {
-      res.redirect("http://localhost:3000/login");
+      res.json({ success: true });
     })
     .catch((err) => console.log(err));
 });

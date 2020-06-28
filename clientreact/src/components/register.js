@@ -9,6 +9,7 @@ import {
   Alert,
 } from "reactstrap";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 class Register extends React.Component {
   state = {
     name: "",
@@ -52,6 +53,9 @@ class Register extends React.Component {
       });
   };
   render() {
+    if (this.state.success) {
+      return <Redirect to="/login" />;
+    }
     return (
       <form onSubmit={this.onFormSubmit}>
         <h3>Sign Up</h3>
